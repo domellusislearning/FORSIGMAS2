@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAPPY BIRTHDAY ATEE TAL!</title>
+
+<link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+
+     <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    
+ <div class="card">
+      <div class="outside">
+        <div class="front">
+          <p>Happy Birthday</p>
+          <div class="cake">
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+            <div class="candle"></div>
+          </div>
+        </div>
+        <div class="back"></div>
+      </div>
+      <div class="inside">
+        <div class="letter-inner">
+          <div class="left-col">
+            <div class="polaroid">
+            <img src="Images/cf25bc06-735e-4d24-834a-94722a75838d.jpg" alt="Family Photo" />
+            </div>
+            <div class="polaroid polaroid--large">
+            <img src="Images/0ab684de-6f8e-45b3-8aec-5764269257d6.jpg" alt="Family Photo 2" />
+            </div>
+          </div>
+          <div class="right-col">
+            <p>Wishing you a day filled with love and happiness. May God strengthen the family and bless you always!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Card audio: place an MP3 at music/happy-birthday.mp3 or update the src to a URL -->
+      <audio id="cardAudio" src="music/SpotiDownloader.com - kahel na langit - Maki.mp3" preload="auto"></audio>
+
+      <script>
+        (function() {
+          const card = document.querySelector('.card');
+          const audio = document.getElementById('cardAudio');
+
+          if (!card || !audio) return;
+
+          // Play when card opens (mouseenter). Pause+reset when it closes (mouseleave).
+          card.addEventListener('mouseenter', () => {
+            // some browsers require a user gesture before playing; ignore errors
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
+          });
+
+          card.addEventListener('mouseleave', () => {
+            try {
+              audio.pause();
+              audio.currentTime = 0;
+            } catch (e) {}
+          });
+
+          // Click toggles audio (useful on touch devices)
+          card.addEventListener('click', (e) => {
+            if (audio.paused) {
+              audio.play().catch(() => {});
+            } else {
+              audio.pause();
+              audio.currentTime = 0;
+            }
+          });
+        })();
+      </script>
+
+    </body>
+    </html>
